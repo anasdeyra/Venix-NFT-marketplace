@@ -1,4 +1,4 @@
-import { createStyles } from "@mantine/core";
+import { createStyles, Header } from "@mantine/core";
 import NavLinks from "./NavLinks";
 import Logo from "./Logo";
 import Searchbar from "./Searchbar";
@@ -11,12 +11,14 @@ const useStyles = createStyles((theme) => ({
     background: "white",
     display: "flex",
     flexDirection: "row",
-    padding: `${theme.spacing.xs}px ${theme.spacing.md}px`,
+    padding: `${theme.spacing.xs}px ${theme.spacing.xl}px`,
     alignItems: "center",
     flexGrow: "2",
     flexWrap: "noWrap",
     gap: theme.spacing.xl * 2,
     justifyContent: "space-between",
+    position: "sticky",
+    top: 0,
   },
   logoContainer: {
     cursor: "pointer",
@@ -37,14 +39,14 @@ const useStyles = createStyles((theme) => ({
 export default function Navbar() {
   const { classes } = useStyles();
   return (
-    <nav className={classes.header}>
+    <Header className={classes.header}>
       <Logo classes={classes} />
       <Searchbar classes={classes} />
       <NavLinks classes={classes} links={LINKS} />
       <WalletButton type="connect">
         <UserCard />
       </WalletButton>
-    </nav>
+    </Header>
   );
 }
 

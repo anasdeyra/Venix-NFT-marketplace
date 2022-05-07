@@ -13,7 +13,8 @@ function MyApp({ Component, pageProps }) {
         }}
       >
         <AppShell
-          padding="md"
+          sx={{ position: "relative", overflow: "hidden" }}
+          padding="xl"
           header={<Navbar />}
           styles={(theme) => ({
             main: {

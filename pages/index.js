@@ -1,32 +1,46 @@
 import {
-  Button,
-  Center,
+  Container,
+  createStyles,
   Group,
-  InputWrapper,
+  Image,
   Paper,
+  SimpleGrid,
   Stack,
-  Text,
-  Textarea,
-  TextInput,
+  Title,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { useEffect } from "react";
 import { Dropzone, IMAGE_MIME_TYPE } from "@mantine/dropzone";
-
 import {
   useNFTCollection,
   useAddress,
   useMetamask,
   useDisconnect,
 } from "@thirdweb-dev/react";
+import Button from "../components/Button";
+
+const useStyles = createStyles((theme) => ({
+  container: {},
+  title: {
+    fontSize: theme.fontSizes.xl * 3,
+    marginTop: theme.spacing.xl * 6,
+  },
+  image: {
+    position: "absolute",
+    right: "-8%",
+    top: "22%",
+    transform: "scale(1.5)",
+    overflow: "hidden",
+  },
+  grid: {},
+  featured: {
+    marginTop: theme.spacing.xl * 5,
+  },
+}));
 
 export default function Home() {
-  const { onSubmit, getInputProps } = useForm({
-    initialValues: { name: "vegeta", description: "he loves rain" },
-  });
+  const { classes } = useStyles();
   const address = useAddress();
-  const connectWallet = useMetamask();
-  const disconnectWallet = useDisconnect();
   const collection = useNFTCollection(
     "0xa71DE17C11e429dA43CeC89907bc056d0e9871a3"
   );
@@ -56,63 +70,25 @@ export default function Home() {
   }
 
   return (
-    <Center>
-      <Paper
-        sx={{ maxWidth: "90vw" }}
-        mt={"xl"}
-        radius={"xl"}
-        shadow={"xs"}
-        p={"xl"}
-      >
-        <Center>
-          {address ? (
-            <Button
-              color={"red"}
-              variant="outline"
-              size="lg"
-              radius={"xl"}
-              onClick={() => {
-                disconnectWallet();
-              }}
-            >
-              Disconnect wallet
+    <Stack spacing={"xl"} className={classes.container}>
+      <SimpleGrid className={classes.grid} cols={2}>
+        <Stack>
+          <Title className={classes.title}>
+            Create, sell, buy, collect magneficent NFTs
+          </Title>
+          <Group mt={"xl"} spacing={"xl"}>
+            <Button size="xl">Explore</Button>
+            <Button variant="subtle" size="xl">
+              Create
             </Button>
-          ) : (
-            <Button
-              color={"indigo"}
-              size="lg"
-              radius={"xl"}
-              onClick={() => {
-                connectWallet("injected");
-              }}
-            >
-              Connect wallet
-            </Button>
-          )}
-        </Center>
-        {address && (
-          <Center>
-            <Text mt={"xl"}>wallet: {address}</Text>
-          </Center>
-        )}
-        <Button onClick={getAll}>get all</Button>
-        <form onSubmit={mint}>
-          <Stack>
-            <InputWrapper label="name" placeholder="Your cool NFT">
-              <TextInput {...getInputProps("name")} type="text" />
-            </InputWrapper>
-            <InputWrapper label="description" placeholder="its very cool NFT">
-              <Textarea {...getInputProps("description")} />
-            </InputWrapper>
-            <InputWrapper label="image">
-              <input type={"file"} />
-            </InputWrapper>
-          </Stack>
-          <Button type="submit" color={"indigo"} mt={"xl"} radius={"xl"}>
-            Mint
-          </Button>
-        </form>
-      </Paper>
-    </Center>
+          </Group>
+        </Stack>
+        <Image className={classes.image} src="/bg.png" alt="illustration" />
+      </SimpleGrid>
+      <Container className={classes.featured}>
+        {" "}
+        <Title>Featured</Title>
+      </Container>
+    </Stack>
   );
 }
