@@ -8,7 +8,6 @@ import UserCard from "./UserCard";
 const useStyles = createStyles((theme) => ({
   header: {
     maxHeight: "4rem",
-    background: "white",
     display: "flex",
     flexDirection: "row",
     padding: `${theme.spacing.xs}px ${theme.spacing.xl}px`,
@@ -19,6 +18,8 @@ const useStyles = createStyles((theme) => ({
     justifyContent: "space-between",
     position: "sticky",
     top: 0,
+    backgroundColor:
+      theme.colorScheme === "dark" ? theme.colors.dark[7] : "white",
   },
   logoContainer: {
     cursor: "pointer",

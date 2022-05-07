@@ -7,30 +7,46 @@ import {
   SimpleGrid,
   Stack,
   Title,
+  Transition,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Dropzone, IMAGE_MIME_TYPE } from "@mantine/dropzone";
 import {
   useNFTCollection,
   useAddress,
   useMetamask,
   useDisconnect,
+  useAccount,
+  useSigner,
 } from "@thirdweb-dev/react";
 import Button from "../components/Button";
 
 const useStyles = createStyles((theme) => ({
-  container: {},
+  container: {
+    marginTop: "10vw",
+  },
   title: {
     fontSize: theme.fontSizes.xl * 3,
-    marginTop: theme.spacing.xl * 6,
+    zIndex: "1",
+    maxWidth: "80vw",
+    color: theme.colorScheme === "dark" ? "white" : "black",
+    [`@media (max-width: ${theme.breakpoints.md}px)`]: {
+      fontSize: theme.fontSizes.xl * 2,
+    },
+    [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+      fontSize: theme.fontSizes.xl * 1.5,
+    },
   },
   image: {
     position: "absolute",
-    right: "-8%",
-    top: "22%",
-    transform: "scale(1.5)",
+    right: "2%",
+    top: "16%",
+    transform: "scale(0.9)",
     overflow: "hidden",
+    [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+      display: "none",
+    },
   },
   grid: {},
   featured: {
@@ -39,11 +55,18 @@ const useStyles = createStyles((theme) => ({
 }));
 
 export default function Home() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   const { classes } = useStyles();
   const address = useAddress();
   const collection = useNFTCollection(
     "0xa71DE17C11e429dA43CeC89907bc056d0e9871a3"
   );
+  const account = useAccount();
+
+  const signer = useSigner();
 
   async function getAll() {
     try {
@@ -71,24 +94,47 @@ export default function Home() {
 
   return (
     <Stack spacing={"xl"} className={classes.container}>
-      <SimpleGrid className={classes.grid} cols={2}>
-        <Stack>
-          <Title className={classes.title}>
-            Create, sell, buy, collect magneficent NFTs
-          </Title>
-          <Group mt={"xl"} spacing={"xl"}>
-            <Button size="xl">Explore</Button>
-            <Button variant="subtle" size="xl">
-              Create
-            </Button>
-          </Group>
-        </Stack>
-        <Image className={classes.image} src="/bg.png" alt="illustration" />
-      </SimpleGrid>
-      <Container className={classes.featured}>
-        {" "}
+      <Transition
+        mounted={mounted}
+        transition="slide-up"
+        duration={1000}
+        timingFunction="ease"
+      >
+        {(styles) => (
+          <Stack py={"xl"} style={styles}>
+            <Title className={classes.title}>
+              Create, sell, buy, collect magnificent NFTs
+            </Title>
+
+            <Group sx={{ zIndex: "1" }} mt={"xl"} spacing={"xl"}>
+              <Button size="xl">Explore</Button>
+              <Button variant="outline" size="xl">
+                Create
+              </Button>
+            </Group>
+          </Stack>
+        )}
+      </Transition>
+
+      <Transition
+        mounted={mounted}
+        transition="slide-left"
+        duration={1000}
+        timingFunction="ease"
+      >
+        {(styles) => (
+          <Image
+            style={styles}
+            className={classes.image}
+            src="/zombie hand.png"
+            alt="illustration"
+          />
+        )}
+      </Transition>
+
+      <Stack className={classes.featured}>
         <Title>Featured</Title>
-      </Container>
+      </Stack>
     </Stack>
   );
 }

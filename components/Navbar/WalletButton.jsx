@@ -12,12 +12,12 @@ export default function WalletButton({ type = "flex", children }) {
         connect("injected");
       }}
     >
-      Connect wallet
+      Connect
     </Button>
   );
   const disconnectWallet = (
     <Button color="red" variant="light" onClick={disconnect}>
-      Disconnect wallet
+      Disconnect
     </Button>
   );
   if (type === "connect" && !address) return connectWallet;

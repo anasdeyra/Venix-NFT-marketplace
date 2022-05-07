@@ -1,4 +1,4 @@
-import { useAddress, useDisconnect } from "@thirdweb-dev/react";
+import { useAddress, useDisconnect, useSigner } from "@thirdweb-dev/react";
 import {
   Divider,
   Menu,
@@ -11,6 +11,8 @@ import {
   Center,
   Group,
   Stack,
+  Badge,
+  MenuLabel,
 } from "@mantine/core";
 import { useDisclosure, useClipboard } from "@mantine/hooks";
 import {
@@ -44,6 +46,8 @@ export default function UserCard() {
   const { classes } = useStyles();
   const [opened, { open, close }] = useDisclosure();
   const disconnect = useDisconnect();
+  const signer = useSigner();
+  console.log(signer);
 
   const profileButton = (
     <UnstyledButton
@@ -72,19 +76,25 @@ export default function UserCard() {
           size="lg"
         >
           <Menu.Label>
-            <Stack>
+            <Stack spacing={"xs"}>
               <Center>
                 <Avatar address={address} size="128px" />
               </Center>
               <Center>
-                <Text color={"black"} size="sm">
-                  Anasdeyra
-                </Text>
+                <Text size="sm">Anasdeyra</Text>
               </Center>
-              <AddressSection address={address} />
+              <Stack spacing={0}>
+                <AddressSection address={address} />
+                {signer?.provider?._network && (
+                  <Badge color={"indigo"}>
+                    {signer?.provider?._network?.name} network
+                  </Badge>
+                )}
+              </Stack>
             </Stack>
           </Menu.Label>
-
+          <Divider />
+          <MenuLabel>Actions</MenuLabel>
           <Menu.Item>Profile</Menu.Item>
           <Menu.Item>My NFTs</Menu.Item>
           <Menu.Item>Settings</Menu.Item>
