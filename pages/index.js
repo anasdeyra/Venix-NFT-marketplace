@@ -63,7 +63,7 @@ export default function Home({}) {
 
   return (
     <Stack spacing={"xl"} className={classes.container}>
-      <Stack py={"xl"} style={styles}>
+      <Stack py={"xl"}>
         <Title className={classes.title}>
           Create, sell, buy, collect magnificent NFTs
         </Title>
@@ -87,7 +87,6 @@ export default function Home({}) {
       </Stack>
 
       <Image
-        style={styles}
         className={classes.image}
         src="/zombie-hand.webp"
         alt="illustration"
