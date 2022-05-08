@@ -1,15 +1,13 @@
 import {
-  Container,
   createStyles,
   Group,
   Image,
-  Paper,
-  SimpleGrid,
   Stack,
   Title,
   Transition,
+  Button,
 } from "@mantine/core";
-import { useForm } from "@mantine/form";
+import { useWindowScroll } from "@mantine/hooks";
 import { useEffect, useState } from "react";
 import { Dropzone, IMAGE_MIME_TYPE } from "@mantine/dropzone";
 import {
@@ -20,7 +18,7 @@ import {
   useAccount,
   useSigner,
 } from "@thirdweb-dev/react";
-import Button from "../components/Button";
+import Link from "next/link";
 
 const useStyles = createStyles((theme) => ({
   container: {
@@ -55,9 +53,11 @@ const useStyles = createStyles((theme) => ({
 }));
 
 export default function Home() {
+  const [scroll, scrollTo] = useWindowScroll();
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
+    scrollTo({ y: 0 });
   }, []);
   const { classes } = useStyles();
   const address = useAddress();
@@ -107,10 +107,20 @@ export default function Home() {
             </Title>
 
             <Group sx={{ zIndex: "1" }} mt={"xl"} spacing={"xl"}>
-              <Button size="xl">Explore</Button>
-              <Button variant="outline" size="xl">
-                Create
-              </Button>
+              <Link href={"/marketplace"}>
+                <Button
+                  gradient={{ from: "indigo", to: "cyan" }}
+                  variant="gradient"
+                  size="xl"
+                >
+                  Explore
+                </Button>
+              </Link>
+              <Link href={"/my-nfts"}>
+                <Button variant="outline" size="xl">
+                  Create
+                </Button>
+              </Link>
             </Group>
           </Stack>
         )}
@@ -118,7 +128,7 @@ export default function Home() {
 
       <Transition
         mounted={mounted}
-        transition="slide-left"
+        transition="slide-up"
         duration={1000}
         timingFunction="ease"
       >

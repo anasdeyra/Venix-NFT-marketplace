@@ -13,6 +13,7 @@ import {
   Stack,
   Badge,
   MenuLabel,
+  useMantineColorScheme,
 } from "@mantine/core";
 import { useDisclosure, useClipboard } from "@mantine/hooks";
 import {
@@ -22,14 +23,11 @@ import {
 
 const useStyles = createStyles((theme) => ({
   userCard: {
-    background: theme.colors.gray[1],
     display: "flex",
     gap: theme.spacing.xs,
     padding: theme.spacing.xs,
     borderRadius: theme.radius.xl,
-    "&:hover": {
-      background: theme.colors.gray[2],
-    },
+
     alignItems: "center",
   },
   text: {
@@ -47,11 +45,26 @@ export default function UserCard() {
   const [opened, { open, close }] = useDisclosure();
   const disconnect = useDisconnect();
   const signer = useSigner();
-  console.log(signer);
+  const { colorScheme } = useMantineColorScheme();
 
   const profileButton = (
     <UnstyledButton
       className={classes.userCard}
+      sx={(theme) =>
+        colorScheme === "dark"
+          ? {
+              background: theme.colors.dark[6],
+              "&:hover": {
+                background: theme.colors.dark[5],
+              },
+            }
+          : {
+              background: theme.colors.gray[0],
+              "&:hover": {
+                background: theme.colors.gray[1],
+              },
+            }
+      }
       onClick={() => {
         opened ? close() : open();
       }}

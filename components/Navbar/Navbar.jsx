@@ -1,9 +1,16 @@
-import { createStyles, Header } from "@mantine/core";
+import {
+  ActionIcon,
+  Button,
+  createStyles,
+  Header,
+  useMantineColorScheme,
+} from "@mantine/core";
 import NavLinks from "./NavLinks";
 import Logo from "./Logo";
 import Searchbar from "./Searchbar";
 import WalletButton from "./WalletButton";
 import UserCard from "./UserCard";
+import { FaSun as SunIcon, FaMoon as MoonIcon } from "react-icons/fa";
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -39,6 +46,7 @@ const useStyles = createStyles((theme) => ({
 
 export default function Navbar() {
   const { classes } = useStyles();
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   return (
     <Header className={classes.header}>
       <Logo classes={classes} />
@@ -47,6 +55,20 @@ export default function Navbar() {
       <WalletButton type="connect">
         <UserCard />
       </WalletButton>
+      <ActionIcon
+        size={"xl"}
+        radius={"50%"}
+        color={"indigo"}
+        onClick={() => {
+          toggleColorScheme();
+        }}
+      >
+        {colorScheme === "dark" ? (
+          <SunIcon size={"22px"} />
+        ) : (
+          <MoonIcon size={"22px"} />
+        )}
+      </ActionIcon>
     </Header>
   );
 }
