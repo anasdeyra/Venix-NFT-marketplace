@@ -136,8 +136,10 @@ export default function Home() {
           <Image
             style={styles}
             className={classes.image}
-            src="/zombie hand.png"
+            src="/zombie-hand.webp"
             alt="illustration"
+            width={"615"}
+            height={"912"}
           />
         )}
       </Transition>

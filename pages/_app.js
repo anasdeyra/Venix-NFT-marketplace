@@ -5,6 +5,7 @@ import { AppShell, MantineProvider, ColorSchemeProvider } from "@mantine/core";
 import theme from "../theme";
 import { defaultProps } from "../theme";
 import { useToggle } from "@mantine/hooks";
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
   const [colorScheme, toggleColorScheme] = useToggle("dark", ["dark", "light"]);
@@ -20,6 +21,15 @@ function MyApp({ Component, pageProps }) {
           theme={{ ...theme, colorScheme }}
           defaultProps={defaultProps}
         >
+          <Head>
+            <title>Venix</title>
+            <meta
+              name="description"
+              content="Venix is a an NFT marketplace opening the doors for new and small artists to thrive in the NFT wolrd"
+            />
+
+            <meta name="keywords" content="NFT, crypto, marketplace" />
+          </Head>
           <AppShell
             padding="xl"
             header={<Navbar />}

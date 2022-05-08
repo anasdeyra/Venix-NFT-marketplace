@@ -6,9 +6,15 @@ export default function Logo({ classes }) {
   return (
     <Link href={"/"}>
       <Group className={classes.logoContainer}>
-        <Image sx={{ width: "36px" }} src="favicon.ico" alt="logo" />
+        <Image
+          sx={{ width: "36px", height: "36px" }}
+          src="favicon.ico"
+          alt="logo"
+        />
         <Title className={classes.logoTitle}>Venix</Title>
       </Group>
     </Link>
   );
 }
+
+function getServerSideProps() {}

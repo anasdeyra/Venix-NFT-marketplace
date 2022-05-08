@@ -56,6 +56,7 @@ export default function Navbar() {
         <UserCard />
       </WalletButton>
       <ActionIcon
+        title="toggle color mode"
         size={"xl"}
         radius={"50%"}
         color={"indigo"}
