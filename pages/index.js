@@ -52,7 +52,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export default function Home() {
+export default function Home({}) {
   const [scroll, scrollTo] = useWindowScroll();
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
@@ -60,37 +60,6 @@ export default function Home() {
     scrollTo({ y: 0 });
   }, []);
   const { classes } = useStyles();
-  const address = useAddress();
-  const collection = useNFTCollection(
-    "0xa71DE17C11e429dA43CeC89907bc056d0e9871a3"
-  );
-  const account = useAccount();
-
-  const signer = useSigner();
-
-  async function getAll() {
-    try {
-      console.log(await collection?.getAll());
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async function mint(e) {
-    e.preventDefault();
-    const [name, des, image] = e.target.elements;
-    try {
-      console.log(
-        await collection?.mintToSelf({
-          name: name.value,
-          description: des.value,
-          image: image.files[0],
-        })
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
   return (
     <Stack spacing={"xl"} className={classes.container}>
