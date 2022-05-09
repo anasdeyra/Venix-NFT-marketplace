@@ -9,15 +9,6 @@ import {
 } from "@mantine/core";
 import { useWindowScroll } from "@mantine/hooks";
 import { useEffect, useState } from "react";
-import { Dropzone, IMAGE_MIME_TYPE } from "@mantine/dropzone";
-import {
-  useNFTCollection,
-  useAddress,
-  useMetamask,
-  useDisconnect,
-  useAccount,
-  useSigner,
-} from "@thirdweb-dev/react";
 import Link from "next/link";
 
 const useStyles = createStyles((theme) => ({
