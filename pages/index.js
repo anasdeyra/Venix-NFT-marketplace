@@ -53,7 +53,9 @@ const useStyles = createStyles((theme) => ({
     fontWeight: "900",
     letterSpacing: "30px",
     top: "5%",
-    color: theme.colorScheme === "dark" ? theme.colors.dark[8] : "#eee",
+    background: theme.colorScheme === "dark" ? theme.colors.dark[8] : "#eee",
+    backgroundClip: "text",
+    textFillColor: "transparent",
   },
   wrapper: {
     gap: theme.spacing.xl * 6,
