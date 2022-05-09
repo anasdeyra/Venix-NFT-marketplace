@@ -8,12 +8,9 @@ export default function Newsletter() {
       <Title order={4}>Sign up to our newsletter</Title>
       <Group spacing={"xs"}>
         <TextInput sx={{ flexGrow: "1" }} placeholder="your@email.com" />
-        <ActionIcon
-          color={"indigo"}
-          variant="filled"
-          size={"lg"}
-          children={<MailIcon />}
-        />
+        <ActionIcon color={"indigo"} variant="filled" size={"lg"}>
+          <MailIcon />
+        </ActionIcon>
       </Group>
       <MediaIcons />
     </Stack>

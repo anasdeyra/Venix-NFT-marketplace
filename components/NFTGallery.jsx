@@ -6,7 +6,7 @@ export default function NFTGallery({ items }) {
   return (
     <Group grow>
       {items.map(({ owner }, i) => (
-        <NFTCard />
+        <NFTCard key={i} />
       ))}
     </Group>
   );

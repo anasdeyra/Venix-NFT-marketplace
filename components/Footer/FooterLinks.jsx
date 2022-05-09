@@ -1,11 +1,4 @@
-import {
-  ActionIcon,
-  createStyles,
-  Group,
-  Stack,
-  TextInput,
-  Title,
-} from "@mantine/core";
+import { createStyles, Group, Stack, Title } from "@mantine/core";
 import { NextLink } from "@mantine/next";
 
 const useStyles = createStyles(() => ({
