@@ -1,3 +1,4 @@
+import Hero from "../components/Home/Hero";
 import {
   createStyles,
   Group,
@@ -6,10 +7,13 @@ import {
   Title,
   Transition,
   Button,
+  Text,
+  Space,
 } from "@mantine/core";
 import { useWindowScroll } from "@mantine/hooks";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Trending from "../components/Home/Trending";
 
 const useStyles = createStyles((theme) => ({
   container: {
@@ -17,7 +21,6 @@ const useStyles = createStyles((theme) => ({
   },
   title: {
     fontSize: theme.fontSizes.xl * 3,
-    zIndex: "1",
     maxWidth: "80vw",
     color: theme.colorScheme === "dark" ? "white" : "black",
     [`@media (max-width: ${theme.breakpoints.md}px)`]: {
@@ -37,9 +40,23 @@ const useStyles = createStyles((theme) => ({
       display: "none",
     },
   },
-  grid: {},
+  grid: { zIndex: "10" },
   featured: {
     marginTop: theme.spacing.xl * 5,
+  },
+  waterMark: {
+    fontSize: theme.fontSizes.xl * 12,
+    maxWidth: "90vw",
+    overflow: "hidden",
+    position: "absolute",
+    zIndex: "0",
+    fontWeight: "900",
+    letterSpacing: "30px",
+    top: "5%",
+    color: theme.colorScheme === "dark" ? theme.colors.dark[8] : "#eee",
+  },
+  wrapper: {
+    gap: theme.spacing.xl * 6,
   },
 }));
 
@@ -53,60 +70,11 @@ export default function Home({}) {
   const { classes } = useStyles();
 
   return (
-    <Stack spacing={"xl"} className={classes.container}>
-      <Transition
-        mounted={mounted}
-        transition="slide-up"
-        duration={1000}
-        timingFunction="ease"
-      >
-        {(styles) => (
-          <Stack py={"xl"} style={styles}>
-            <Title className={classes.title}>
-              Create, sell, buy, collect magnificent NFTs
-            </Title>
-
-            <Group sx={{ zIndex: "1" }} mt={"xl"} spacing={"xl"}>
-              <Link href={"/marketplace"}>
-                <Button
-                  gradient={{ from: "indigo", to: "cyan" }}
-                  variant="gradient"
-                  size="xl"
-                >
-                  Explore
-                </Button>
-              </Link>
-              <Link href={"/my-nfts"}>
-                <Button variant="outline" size="xl">
-                  Create
-                </Button>
-              </Link>
-            </Group>
-          </Stack>
-        )}
-      </Transition>
-
-      <Transition
-        mounted={mounted}
-        transition="slide-up"
-        duration={1000}
-        timingFunction="ease"
-      >
-        {(styles) => (
-          <Image
-            style={styles}
-            className={classes.image}
-            src="/zombie-hand.webp"
-            alt="illustration"
-            width={"615"}
-            height={"912"}
-          />
-        )}
-      </Transition>
-
-      <Stack className={classes.featured}>
-        <Title>Featured</Title>
-      </Stack>
+    <Stack className={classes.wrapper}>
+      <Text className={classes.waterMark}>VENIX</Text>
+      <Hero mounted={mounted} classes={classes} />
+      <Trending />
+      <Space />
     </Stack>
   );
 }

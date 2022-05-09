@@ -9,11 +9,6 @@ export const defaultProps = {
       color: theme.colorScheme === "dark" ? "white" : "black",
     }),
   },
-  Text: {
-    sx: (theme) => ({
-      color: theme.colorScheme === "dark" ? "white" : "black",
-    }),
-  },
   Button: {
     radius: "xl",
   },

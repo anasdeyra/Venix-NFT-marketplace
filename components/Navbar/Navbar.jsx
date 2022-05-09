@@ -28,14 +28,7 @@ const useStyles = createStyles((theme) => ({
     backgroundColor:
       theme.colorScheme === "dark" ? theme.colors.dark[7] : "white",
   },
-  logoContainer: {
-    cursor: "pointer",
-  },
-  logoTitle: {
-    [`@media(max-width: ${theme.breakpoints.md}px)`]: {
-      display: "none",
-    },
-  },
+
   linkText: {
     textTransform: "capitalize",
   },
@@ -49,7 +42,7 @@ export default function Navbar() {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   return (
     <Header className={classes.header}>
-      <Logo classes={classes} />
+      <Logo />
       <Searchbar classes={classes} />
       <NavLinks classes={classes} links={LINKS} />
       <WalletButton type="connect">

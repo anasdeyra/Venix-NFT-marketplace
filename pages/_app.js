@@ -6,11 +6,12 @@ import theme from "../theme";
 import { defaultProps } from "../theme";
 import { useToggle } from "@mantine/hooks";
 import Head from "next/head";
+import Footer from "../components/Footer/Footer";
 
 function MyApp({ Component, pageProps }) {
   const [colorScheme, toggleColorScheme] = useToggle("dark", ["dark", "light"]);
   return (
-    <ThirdwebProvider desiredChainId={[4]}>
+    <ThirdwebProvider desiredChainId={4}>
       <ColorSchemeProvider
         colorScheme={colorScheme}
         toggleColorScheme={toggleColorScheme}
@@ -33,6 +34,7 @@ function MyApp({ Component, pageProps }) {
           <AppShell
             padding="xl"
             header={<Navbar />}
+            footer={<Footer />}
             styles={(theme) => ({
               main: {
                 backgroundColor:
