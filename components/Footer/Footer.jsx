@@ -7,7 +7,7 @@ import {
   Stack,
   Text,
 } from "@mantine/core";
-import Logo from "../Navbar/Logo";
+import Logo from "../Logo";
 import FooterLinks from "./FooterLinks";
 import Newsletter from "./Newsteller";
 

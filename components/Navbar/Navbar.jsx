@@ -6,7 +6,7 @@ import {
   useMantineColorScheme,
 } from "@mantine/core";
 import NavLinks from "./NavLinks";
-import Logo from "./Logo";
+import Logo from "../Logo";
 import Searchbar from "./Searchbar";
 import WalletButton from "./WalletButton";
 import UserCard from "./UserCard";
@@ -29,9 +29,6 @@ const useStyles = createStyles((theme) => ({
       theme.colorScheme === "dark" ? theme.colors.dark[7] : "white",
   },
 
-  linkText: {
-    textTransform: "capitalize",
-  },
   searchbarContainer: {
     flexGrow: "2",
   },
