@@ -51,7 +51,7 @@ const useStyles = createStyles((theme, _params, getRef) => {
       zIndex: 1,
     },
 
-    title: {
+    name: {
       color: theme.white,
       marginBottom: 5,
     },
@@ -69,7 +69,7 @@ const useStyles = createStyles((theme, _params, getRef) => {
 
 export default function NFTCard({
   image,
-  title,
+  name,
   owner,
   priceETH,
   priceUSD,
@@ -95,8 +95,8 @@ export default function NFTCard({
 
       <div className={classes.content}>
         <div>
-          <Text size="lg" className={classes.title} weight={500}>
-            {title}
+          <Text size="lg" className={classes.name} weight={500}>
+            {name}
           </Text>
 
           <Group position="apart" spacing="xs">
@@ -104,20 +104,22 @@ export default function NFTCard({
               @{owner}
             </Text>
 
-            <Group spacing="lg">
-              <Center>
-                <FaEthereum size={16} color={theme.colors.dark[2]} />
-                <Text size="sm" className={classes.bodyText}>
-                  {priceETH}
-                </Text>
-              </Center>
-              <Center>
-                <FaDollarSign size={16} color={theme.colors.dark[2]} />
-                <Text size="sm" className={classes.bodyText}>
-                  {priceUSD}
-                </Text>
-              </Center>
-            </Group>
+            {priceETH && (
+              <Group spacing="lg">
+                <Center>
+                  <FaEthereum size={16} color={theme.colors.dark[2]} />
+                  <Text size="sm" className={classes.bodyText}>
+                    {priceETH}
+                  </Text>
+                </Center>
+                <Center>
+                  <FaDollarSign size={16} color={theme.colors.dark[2]} />
+                  <Text size="sm" className={classes.bodyText}>
+                    {priceUSD}
+                  </Text>
+                </Center>
+              </Group>
+            )}
           </Group>
         </div>
       </div>

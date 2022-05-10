@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@alch/alchemy-web3": "^1.4.2",
     "@mantine/core": "^4.2.2",
     "@mantine/hooks": "^4.2.2",
     "@mantine/next": "^4.2.3",

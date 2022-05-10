@@ -6,7 +6,6 @@ import {
   createStyles,
   Tooltip,
   Text,
-  Image,
   ActionIcon,
   Center,
   Group,
@@ -20,6 +19,15 @@ import {
   MdContentCopy as CopyIcon,
   MdExpandMore as ChevronDown,
 } from "react-icons/md";
+import Link from "next/link";
+
+import {
+  FaSignOutAlt as SignOutIcon,
+  FaImages as NFTIcon,
+  FaCog as SettingsIcon,
+  FaUser as ProfileIcon,
+} from "react-icons/fa";
+import Avatar from "../Avatar";
 
 const useStyles = createStyles((theme) => ({
   userCard: {
@@ -98,21 +106,27 @@ export default function UserCard() {
               </Center>
               <Stack spacing={0}>
                 <AddressSection address={address} />
-                {signer?.provider?._network && (
-                  <Badge color={"indigo"}>
-                    {signer?.provider?._network?.name} network
-                  </Badge>
-                )}
+                <Badge color={"indigo"}>
+                  {signer?.provider?._network?.name} network
+                </Badge>
               </Stack>
             </Stack>
           </Menu.Label>
           <Divider />
           <MenuLabel>Actions</MenuLabel>
-          <Menu.Item>Profile</Menu.Item>
-          <Menu.Item>My NFTs</Menu.Item>
-          <Menu.Item>Settings</Menu.Item>
+          <Menu.Item icon={<ProfileIcon />}>
+            <Link href={"/profile"}>Profile</Link>
+          </Menu.Item>
+
+          <Menu.Item icon={<NFTIcon />}>
+            <Link href={"/mynfts"}>My NFTs</Link>
+          </Menu.Item>
+
+          <Menu.Item icon={<SettingsIcon />}>
+            <Link href={"/settings"}>Settings</Link>
+          </Menu.Item>
           <Divider />
-          <Menu.Item onClick={disconnect} color={"red"}>
+          <Menu.Item icon={<SignOutIcon />} onClick={disconnect} color={"red"}>
             Disconnect
           </Menu.Item>
         </Menu>
@@ -147,16 +161,5 @@ function AddressSection({ address }) {
         </ActionIcon>
       </Tooltip>
     </Group>
-  );
-}
-
-function Avatar({ address, size = "24px" }) {
-  return (
-    <Image
-      width={size}
-      radius={"50%"}
-      src={`https://avatars.dicebear.com/api/identicon/${address}.svg`}
-      alt="user avatar"
-    />
   );
 }

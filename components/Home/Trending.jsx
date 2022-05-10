@@ -24,7 +24,7 @@ export default function Trending() {
         <NFTCard
           priceETH={"3.1"}
           priceUSD={"35K"}
-          title={"Bored Ape #2560"}
+          name={"Bored Ape #2560"}
           link={
             "https://s.yimg.com/os/creatr-uploaded-images/2022-04/61254c10-c4e2-11ec-b6eb-8947bb0d6d4e"
           }
@@ -34,7 +34,7 @@ export default function Trending() {
         <NFTCard
           priceETH={"3.1"}
           priceUSD={"35K"}
-          title={"Bored Ape #2560"}
+          name={"Bored Ape #2560"}
           link={
             "https://s.yimg.com/os/creatr-uploaded-images/2022-04/61254c10-c4e2-11ec-b6eb-8947bb0d6d4e"
           }
@@ -44,7 +44,7 @@ export default function Trending() {
         <NFTCard
           priceETH={"3.1"}
           priceUSD={"35K"}
-          title={"Bored Ape #2560"}
+          name={"Bored Ape #2560"}
           link={
             "https://s.yimg.com/os/creatr-uploaded-images/2022-04/61254c10-c4e2-11ec-b6eb-8947bb0d6d4e"
           }
@@ -54,7 +54,7 @@ export default function Trending() {
         <NFTCard
           priceETH={"3.1"}
           priceUSD={"35K"}
-          title={"Bored Ape #2560"}
+          name={"Bored Ape #2560"}
           link={
             "https://s.yimg.com/os/creatr-uploaded-images/2022-04/61254c10-c4e2-11ec-b6eb-8947bb0d6d4e"
           }
@@ -64,7 +64,7 @@ export default function Trending() {
         <NFTCard
           priceETH={"3.1"}
           priceUSD={"35K"}
-          title={"Bored Ape #2560"}
+          name={"Bored Ape #2560"}
           link={
             "https://s.yimg.com/os/creatr-uploaded-images/2022-04/61254c10-c4e2-11ec-b6eb-8947bb0d6d4e"
           }
@@ -74,7 +74,7 @@ export default function Trending() {
         <NFTCard
           priceETH={"3.1"}
           priceUSD={"35K"}
-          title={"Bored Ape #2560"}
+          name={"Bored Ape #2560"}
           link={
             "https://s.yimg.com/os/creatr-uploaded-images/2022-04/61254c10-c4e2-11ec-b6eb-8947bb0d6d4e"
           }
