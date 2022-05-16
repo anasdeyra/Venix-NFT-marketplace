@@ -23,7 +23,7 @@ import Link from "next/link";
 
 import {
   FaSignOutAlt as SignOutIcon,
-  FaImages as NFTIcon,
+  FaPlusCircle as NFTIcon,
   FaCog as SettingsIcon,
   FaUser as ProfileIcon,
 } from "react-icons/fa";
@@ -119,7 +119,7 @@ export default function UserCard() {
           </Menu.Item>
 
           <Menu.Item icon={<NFTIcon />}>
-            <Link href={"/mynfts"}>My NFTs</Link>
+            <Link href={"/mynfts"}>Add a collection</Link>
           </Menu.Item>
 
           <Menu.Item icon={<SettingsIcon />}>
