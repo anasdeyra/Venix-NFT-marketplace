@@ -13,6 +13,7 @@ import {
   Badge,
   MenuLabel,
   useMantineColorScheme,
+  Button,
 } from "@mantine/core";
 import { useDisclosure, useClipboard } from "@mantine/hooks";
 import {
@@ -30,14 +31,6 @@ import {
 import Avatar from "../Avatar";
 
 const useStyles = createStyles((theme) => ({
-  userCard: {
-    display: "flex",
-    gap: theme.spacing.xs,
-    padding: theme.spacing.xs,
-    borderRadius: theme.radius.xl,
-
-    alignItems: "center",
-  },
   text: {
     maxWidth: "166px",
     display: "inline-block",
@@ -56,8 +49,12 @@ export default function UserCard() {
   const { colorScheme } = useMantineColorScheme();
 
   const profileButton = (
-    <UnstyledButton
-      className={classes.userCard}
+    <ActionIcon
+      size={"lg"}
+      radius="50%"
+      onClick={() => {
+        opened ? close() : open();
+      }}
       sx={(theme) =>
         colorScheme === "dark"
           ? {
@@ -73,16 +70,9 @@ export default function UserCard() {
               },
             }
       }
-      onClick={() => {
-        opened ? close() : open();
-      }}
     >
-      <Avatar address={address} />
-      <Text weight={"bold"} size="sm" className={classes.text}>
-        Aansdeyra
-      </Text>
-      <ChevronDown size={"18px"} />
-    </UnstyledButton>
+      <Avatar size="32px" radius="50%" address={address} />
+    </ActionIcon>
   );
 
   return (
@@ -119,7 +109,7 @@ export default function UserCard() {
           </Menu.Item>
 
           <Menu.Item icon={<NFTIcon />}>
-            <Link href={"/mynfts"}>Add a collection</Link>
+            <Link href={"/create-collection"}>Add a collection</Link>
           </Menu.Item>
 
           <Menu.Item icon={<SettingsIcon />}>

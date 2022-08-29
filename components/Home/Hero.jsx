@@ -25,20 +25,11 @@ export default function Hero({ mounted, classes }) {
               spacing={"xl"}
             >
               <Link href={"/marketplace"}>
-                <Button
-                  gradient={{
-                    from: "indigo",
-                    to: "cyan",
-                  }}
-                  variant="gradient"
-                  size="xl"
-                >
-                  Explore
-                </Button>
+                <Button size="xl">Explore Now</Button>
               </Link>
               <Link href={"/my-nfts"}>
                 <Button variant="outline" size="xl">
-                  Create
+                  Get Started
                 </Button>
               </Link>
             </Group>

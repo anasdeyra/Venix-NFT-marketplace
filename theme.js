@@ -1,7 +1,9 @@
+export const PRIMARY_COLOR = "orange";
+
 export default {
   headings: { fontFamily: "Poppins, sans-serif" },
   fontFamily: "Poppins, sans-serif",
-  primaryColor: "orange",
+  primaryColor: PRIMARY_COLOR,
   primaryShade: 7,
 };
 

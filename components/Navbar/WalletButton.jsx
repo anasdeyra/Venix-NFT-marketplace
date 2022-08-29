@@ -1,6 +1,6 @@
 import { useAddress, useDisconnect, useMetamask } from "@thirdweb-dev/react";
 import React from "react";
-import Button from "../Button";
+import { Button } from "@mantine/core";
 
 export default function WalletButton({ type = "flex", children }) {
   const address = useAddress();

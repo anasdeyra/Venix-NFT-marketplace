@@ -1,16 +1,13 @@
-import {
-  ActionIcon,
-  Button,
-  createStyles,
-  Header,
-  useMantineColorScheme,
-} from "@mantine/core";
+import { Button, createStyles, Header } from "@mantine/core";
 import NavLinks from "./NavLinks";
 import Logo from "../Logo";
 import Searchbar from "./Searchbar";
 import WalletButton from "./WalletButton";
 import UserCard from "./UserCard";
-import { FaSun as SunIcon, FaMoon as MoonIcon } from "react-icons/fa";
+
+import ToggleColorSchemeButton from "../Home/ToggleColorSchemeButton";
+import { useAddress } from "@thirdweb-dev/react";
+import { NextLink } from "@mantine/next";
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -21,7 +18,7 @@ const useStyles = createStyles((theme) => ({
     alignItems: "center",
     flexGrow: "2",
     flexWrap: "noWrap",
-    gap: theme.spacing.xl * 2,
+    gap: theme.spacing.xl,
     justifyContent: "space-between",
     position: "sticky",
     top: 0,
@@ -36,32 +33,25 @@ const useStyles = createStyles((theme) => ({
 
 export default function Navbar() {
   const { classes } = useStyles();
-  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+  const address = useAddress();
+
   return (
     <Header className={classes.header}>
       <Logo />
       <Searchbar classes={classes} />
       <NavLinks classes={classes} links={LINKS} />
+      {address && (
+        <Button component={NextLink} href="/create-nft">
+          Create
+        </Button>
+      )}
       <WalletButton type="connect">
         <UserCard />
       </WalletButton>
-      <ActionIcon
-        title="toggle color mode"
-        size={"xl"}
-        radius={"50%"}
-        color={"indigo"}
-        onClick={() => {
-          toggleColorScheme();
-        }}
-      >
-        {colorScheme === "dark" ? (
-          <SunIcon size={"22px"} />
-        ) : (
-          <MoonIcon size={"22px"} />
-        )}
-      </ActionIcon>
+
+      <ToggleColorSchemeButton />
     </Header>
   );
 }
 
-const LINKS = ["marketplace", "collections"];
+const LINKS = ["explore", "stats", "activities", "help"];
