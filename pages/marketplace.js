@@ -5,8 +5,9 @@ import { useEffect } from "react";
 
 export default function Marketplace() {
   const marketplace = useMarketplace(
-    "0x6e68E975d0d6d57E8EBdBdC346b022d381F42667"
+    process.env.NEXT_PUBLIC_MARKETPLACE_ADDRESS
   );
+
   const [listings, listingsHandlers] = useListState([]);
   async function getListings() {
     const s = await marketplace.getActiveListings();

@@ -1,6 +1,8 @@
 export default {
   headings: { fontFamily: "Poppins, sans-serif" },
   fontFamily: "Poppins, sans-serif",
+  primaryColor: "orange",
+  primaryShade: 7,
 };
 
 export const defaultProps = {
@@ -10,6 +12,6 @@ export const defaultProps = {
     }),
   },
   Button: {
-    radius: "xl",
+    radius: "md",
   },
 };
