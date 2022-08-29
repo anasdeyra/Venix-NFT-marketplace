@@ -27,7 +27,7 @@ async function filterCollections(filteredData) {
   return filteredCollections;
 }
 
-export default function index() {
+export default function Index() {
   const {
     register,
     handleSubmit,
