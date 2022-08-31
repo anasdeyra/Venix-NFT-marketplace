@@ -81,7 +81,7 @@ export default function Index() {
   }, [address]);
 
   return (
-    <Container>
+    <Container size={"sm"} my={"4xl"}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Title mb={44}>Create an NFT</Title>
         <Stack>

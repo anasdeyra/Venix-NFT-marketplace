@@ -1,14 +1,14 @@
 import React from "react";
 import { Input } from "@mantine/core";
-import { MdSearch } from "react-icons/md";
+import { IoSearch } from "react-icons/io5";
 
 export default function Searchbar({ classes }) {
   return (
     <Input
       className={classes.searchbarContainer}
-      icon={<MdSearch size={"20px"} />}
+      icon={<IoSearch />}
       placeholder="Search a collection, item or an account"
-      radius="xl"
+      radius="md"
       size="md"
       variant="filled"
     />

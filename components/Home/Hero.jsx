@@ -25,10 +25,12 @@ export default function Hero({ mounted, classes }) {
               spacing={"xl"}
             >
               <Link href={"/marketplace"}>
-                <Button size="xl">Explore Now</Button>
+                <Button radius={"md"} size="xl">
+                  Explore Now
+                </Button>
               </Link>
               <Link href={"/my-nfts"}>
-                <Button variant="outline" size="xl">
+                <Button radius={"md"} variant="outline" size="xl">
                   Get Started
                 </Button>
               </Link>

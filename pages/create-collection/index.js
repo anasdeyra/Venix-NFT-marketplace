@@ -52,7 +52,7 @@ export default function Index() {
   };
 
   return (
-    <Container>
+    <Container size={"sm"} my={"4xl"}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Title mb={44}>Create a collection</Title>
         <Stack>
